@@ -4,33 +4,18 @@ from math import ceil
 import csv
 import json
 
+# Global constants #
+csvDataFileName = 'data.csv'
 workshopNames = [ "BE ", "MAE", "CE ", "CS ", "ECE" ]
 numRounds = 3
 
-
+# Global data sets
 data = []
 rounds = []
 studentSchedules = {}
 
-# SAMPLE DATA
-"""
-# (Student name, [workshop1 rank, workshop2 rank, ...])
-data = [
-    ( "Ayumi"     , [1, 1, 2]) ,
-    ( "Sally"     , [1, 1, 1]) ,
-    ( "Kenna"     , [3, 3, 1]) ,
-    ( "Abhu"      , [1, 1, 1]) ,
-    ( "Jasmine"   , [3, 2, 1]) ,
-    ( "Cho"       , [2, 2, 1]) ,
-    ( "Alex"      , [2, 2, 1]) ,
-    ( "Sonya"     , [2, 2, 1]) ,
-    ( "Chetna"    , [1, 2, 3]) ,
-    ( "Nicki"     , [1, 2, 3]) ,
-    ]
-"""
-
 def readData():
-    csvfile = open('data.csv', 'r')
+    csvfile = open(csvDataFileName, 'r')
     reader = csv.reader(csvfile)
     for i, row in enumerate(reader):
         if i > 2:
@@ -38,10 +23,10 @@ def readData():
             studentSchedules[row[9]] = []
     csvfile.close()
 
-def printRound(wRound):
-    for i, workshop in enumerate(wRound):
+def printRound(wRounds):
+    for i, workshop in enumerate(wRounds):
         print workshop + ":"
-        for student in wRound[workshop]:
+        for student in wRounds[workshop]:
             print "(" + student[1] + ") " + student[0]
         print ""
 
@@ -88,5 +73,5 @@ readData()
 for r in range(0,numRounds):
     computeRound(r)
 
-#printSchedule()
-printStudentSchedules()
+printSchedule()
+#printStudentSchedules()
