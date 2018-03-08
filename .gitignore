@@ -1,1 +1,4 @@
 *.pyc
+data.csv
+MasterSchedule.txt
+StudentSchedules.txt
