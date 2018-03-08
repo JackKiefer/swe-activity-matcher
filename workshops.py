@@ -38,7 +38,7 @@ def readData():
     csvfile = open(csvDataFileName, 'r')
     reader = csv.reader(csvfile)
     for i, row in enumerate(reader):
-        if i > 2:
+        if i > 0:
             # TODO: Adjust this to actually fetch the data properly however you need it.
             data.append( (row[9], map(int, [row[17], row[18], row[19], row[20], row[21]])))
             studentSchedules[row[9]] = []
